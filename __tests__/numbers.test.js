@@ -42,6 +42,17 @@ describe('/numbers', () => {
           done();
         });
     });
+
+    it('errors if the parameters are not numbers', done => {
+      request(app)
+        .get('/numbers/add/fish/and/1')
+        .then(res => {
+          expect(res.status).toEqual(400);
+          expect(res.body).toEqual({ error: 'Parameters must be valid numbers.' });
+          done();
+        });
+    });
+
   });
 
   describe('GET /subtract/{number}/from/{number}', () => {
