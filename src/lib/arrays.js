@@ -54,9 +54,9 @@ const onlyEven = numbers => {
 };
 
 const removeNthElement2 = (index, array) => {
-  // your code here
-  return array.slice(0,index).concat(array.slice(index + 1));
-  // splice() will mutate but slice() will not. So i have sliced out the strings we need (copy and paste) and concatenate with another slice out (that we need). Leaving behind the unwanted string.
+  const newArray = [...array];
+  newArray.splice(index, 1);
+  return newArray;
 };
 
 const elementsStartingWithAVowel = strings => {

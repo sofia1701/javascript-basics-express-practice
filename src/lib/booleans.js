@@ -71,7 +71,7 @@ const isSquare = a => {
 
 const startsWith = (char, string) => {
   // your code here
-  return string.startsWith("a");
+  return string.startsWith(char);
 };
 
 const containsVowels = string => {
