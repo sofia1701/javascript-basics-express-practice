@@ -7,6 +7,9 @@ const { sayHello, uppercase, lowercase, firstCharacters } = require('./lib/strin
 
 const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
 
+const { negate, truthiness, isOdd, startsWith } = require('./lib/booleans');
+
+// Strings
 app.get('/strings/hello/:string', (req, res) => {
   res.status(200);
   res.send({ result: sayHello(req.params.string) });
@@ -107,6 +110,38 @@ app.post('/numbers/remainder', (req, res) => {
   } else {
     res.status(200);
     res.json({ result: remainder(a, b) });
+  }
+});
+
+// Booleans
+app.post('/booleans/negate', (req, res) => {
+  res.status(200);
+  res.json({ result: negate(req.body.value) });
+});
+
+app.post('/booleans/truthiness', (req, res) => {
+  res.status(200);
+  res.json({ result: truthiness(req.body.value) });
+});
+
+app.get('/booleans/is-odd/:number', (req, res) => {
+  const number = parseInt(req.params.number, 10);
+  if (!number) {
+    res.status(400);
+    res.json({ error: 'Parameter must be a number.' });
+  } else {
+    res.status(200);
+    res.json({ result: isOdd(number) });
+  }
+});
+
+app.get('/booleans/:string/starts-with/:character', (req, res) => {
+  if (req.params.character.length > 1) {
+    res.status(400);
+    res.json({ error: 'Parameter "character" must be a single character.' });
+  } else {
+    res.status(200);
+    res.json({ result: req.params.string.startsWith(req.params.character) });
   }
 });
 
