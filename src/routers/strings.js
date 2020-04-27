@@ -5,7 +5,7 @@ const { sayHello, uppercase, lowercase, firstCharacters } = require('../controll
 
 router.get('/hello/:string', sayHello);
 router.get('/upper/:string', uppercase);
-//router.get('/lower/:string', lowercase);
-//router.get('/first-characters/:string', firstCharacters);
+router.get('/lower/:string', lowercase);
+router.get('/first-characters/:string', firstCharacters);
 
 module.exports = router;
