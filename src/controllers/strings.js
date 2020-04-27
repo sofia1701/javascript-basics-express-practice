@@ -5,4 +5,8 @@ module.exports = {
     res.status(200);
     res.send({ result: sayHello(req.params.string) });
   },
+  uppercase: (req, res) => {
+    res.status(200);
+    res.send({ result: uppercase(req.params.string) });
+  },
 };
